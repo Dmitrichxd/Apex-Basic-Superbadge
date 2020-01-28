@@ -1,0 +1,36 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId" 
+                controller="BoatSearchFormController">
+    <aura:attribute name="options" type="String[]" default="All Types"/>
+    <aura:attribute name="selectedValue" type="String"/>
+    <aura:attribute name="boatTypes" type="Object"/>
+    <aura:attribute name="isNewButtonVisible" type="Boolean" default="false"/>
+    <aura:handler name="init" value="{! this }" action="{! c.init }" />
+    <aura:registerEvent name="formSubmit" type="c:formsubmit"/>
+    <article class="slds-card">
+        <div class="slds-card__header">
+            <header>
+                <h2 class="slds-card__header-title">
+                    <span>Find a boat</span>
+                </h2>
+            </header>
+        </div>
+        <lightning:layout horizontalAlign="center" class="slds-p-bottom_large">
+            <lightning:layoutItem>
+                <lightning:select name="select" value="{!v.selectedValue}">
+                    <option value="All Types">All Types</option>
+                    <aura:iteration items="{!v.options}" var="option">
+                        <option text="{!option}"></option>
+                    </aura:iteration>
+                </lightning:select>
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="horizontal-small">
+                <lightning:button variant="brand" label="Search" title="Search" onclick="{! c.onFormSubmit }" />
+            </lightning:layoutItem>
+            <aura:if isTrue="{!v.isNewButtonVisible}">
+                <lightning:layoutItem>
+                    <lightning:button label="New" title="New" onclick="{! c.createRecord }"/>
+                </lightning:layoutItem>
+            </aura:if>
+        </lightning:layout> 
+    </article>
+</aura:component>

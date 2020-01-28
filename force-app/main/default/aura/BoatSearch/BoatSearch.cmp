@@ -1,0 +1,8 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId">
+    <aura:attribute name="boatTypeId" type="String"/>
+    <aura:handler name="formSubmit" event="c:formsubmit" action="{!c.onFormSubmit}"/>
+    <div style="margin-bottom: 10px;">    
+        <c:BoatSearchForm />
+    </div>
+    <c:BoatSearchResults aura:id="BSR"/>
+</aura:component>
