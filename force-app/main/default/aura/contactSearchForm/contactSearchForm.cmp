@@ -1,0 +1,19 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId">
+    <aura:attribute name="issearching" type="Boolean" default="false" />
+    <aura:registerEvent name="contactSearchStarted" type="c:contactSearchStarted"/>
+    <div>
+        <div onkeyup="{! c.handleKeyUp }" class="slds-size_x-large slds-m-around_x-small">
+            <lightning:input aura:id="enter-search" 
+                             name="enter-search" 
+                             label="Hit 'Enter' key for search"
+                             isLoading="{! v.issearching }" 
+                             type="search" />
+                            </div>
+                            <div class="slds-m-horizontal_x-small">
+            <lightning:button label="Search"
+                            variant="brand" 
+                            title="Search" 
+                            onclick="{! c.searchClick }"/>
+                        </div>
+    </div>
+</aura:component>

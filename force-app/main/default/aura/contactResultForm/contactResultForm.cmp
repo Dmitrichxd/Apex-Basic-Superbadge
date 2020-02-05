@@ -1,0 +1,33 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId" controller="contactsSearchResult">
+    <aura:attribute name="isLoaded" type="Boolean" default="false" />
+    <aura:attribute name="isListTooLong" type="Boolean" default="false" />
+    <aura:attribute name="recordsLimit" type="Integer" />
+    <aura:attribute name="searchingName" type="String" />
+    <aura:attribute name="contacts" type="Contact[]" />
+    <aura:attribute name="emptyContactList" type="boolean" default="true" />
+
+    <aura:handler name="change" value="{!v.searchingName}" action="{!c.init}" />
+    <aura:handler name="init" value="{! this }" action="{! c.init }" />
+    <div>
+        <lightning:layout multipleRows="true">
+            <aura:iteration loaded="{!v.isLoaded}" items="{!v.contacts}" var="contact">
+                <lightning:layoutItem flexibility="auto" size="4" padding="around-small">
+                    <c:contactFormTile contact="{!contact}" />
+                </lightning:layoutItem>
+            </aura:iteration>
+            <aura:if isTrue="{!v.emptyContactList}">
+                <div>No Contacts found</div>
+            </aura:if>
+            <aura:if isTrue="{!v.isLoaded}">
+                <div class="exampleHolder">
+                    <lightning:spinner alternativeText="Loading" size="large" />
+                </div>
+            </aura:if>
+        </lightning:layout>
+        <aura:if isTrue="{!v.isListTooLong}">
+                <div class="slds-align_absolute-center">
+                    <a href="javascript:void(0);" onclick="{!c.makeContactListLonger}">Load more contacts</a>
+                </div>
+        </aura:if>
+    </div>
+</aura:component>

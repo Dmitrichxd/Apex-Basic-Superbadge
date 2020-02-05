@@ -1,0 +1,19 @@
+<aura:component implements="flexipage:availableForAllPageTypes, force:hasRecordId" access="global">
+    <aura:attribute name="contact" type="Contact" />
+    <lightning:overlayLibrary aura:id="overlayLib" />
+    <div aura:id="overlayLibBody" class="slds-p-bottom_x-small">
+        Title: {!v.contact.Title}<br />
+        First Name: {!v.contact.FirstName}<br />
+        Last Name: {!v.contact.LastName}<br />
+        Email: {!v.contact.Email}<br />
+        Phone: {!v.contact.Phone}<br />
+        Account: {!v.contact.Account.Name}<br />
+        Id: {!v.contact.Id}<br />
+        Owner's Name: {!v.contact.Owner.Name}
+    </div>
+    <lightning:buttonGroup>
+        <lightning:button label="View" onclick="{!c.contactView}" />
+        <lightning:button label="Edit" onclick="{!c.contactEdit}" variant="brand" />
+        <lightning:button label="Close" onclick="{!c.contactClose}" variant="destructive" />
+    </lightning:buttonGroup>
+</aura:component>

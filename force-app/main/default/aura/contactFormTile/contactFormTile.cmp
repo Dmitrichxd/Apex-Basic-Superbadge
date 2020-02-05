@@ -1,0 +1,17 @@
+<aura:component implements="flexipage:availableForAllPageTypes, force:hasRecordId">
+    <aura:attribute name="contact" type="Contact" />
+    <lightning:overlayLibrary aura:id="overlayLib" />
+    <lightning:tile label="">
+        <aura:set attribute="media">
+            <lightning:icon iconName="standard:groups" />
+        </aura:set>
+        <ul>
+            <li title="Name">
+                <a href="javascript:void(0);" onclick="{!c.handleShowModal}">{!v.contact.Name}</a>
+            </li>
+            <li title="Email">
+                Email: {!v.contact.Email}
+            </li>
+        </ul>
+    </lightning:tile>
+</aura:component>

@@ -1,0 +1,15 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId">
+    <aura:attribute name="maxRecordsLimit" type="Integer" default="10" />
+    <aura:attribute name="searchingName" type="String"/>
+    
+    <aura:handler event="c:contactSearchStarted" name="contactSearchStarted" action="{! c.onContactSearchStarted }" phase="capture"/>
+    <lightning:card title="Contacts" iconName="standard:contact">
+        <div>
+            <c:contactSearchForm />
+        </div>
+        <div class="slds-m-vertical_xx-small">
+            <c:contactResultForm recordsLimit="{!v.maxRecordsLimit}"
+                                 searchingName="{!v.searchingName}"/>
+        </div>
+    </lightning:card>
+</aura:component>
